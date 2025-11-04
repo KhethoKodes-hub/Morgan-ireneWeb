@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgan & Irene Corp - Building Excellence Since 2023</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #DAA520;
+            --primary-dark: #b8860b;
+            --dark: #0a0a0a;
+            --dark-light: #1a1a1a;
+            --text: #ffffff;
+            --text-light: #cccccc;
+            --text-muted: #888888;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.3"/></svg>');
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 5%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, var(--primary) 2px, var(--primary) 3px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, var(--primary) 2px, var(--primary) 3px);
+            background-size: 50px 50px;
+            animation: slidePattern 20s linear infinite;
+        }
+
+        @keyframes slidePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-year {
+            font-size: 8rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--primary);
+            text-stroke: 2px var(--primary);
+            line-height: 1;
+            margin-bottom: 1rem;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.3)); }
+            50% { filter: drop-shadow(0 0 40px rgba(218, 165, 32, 0.6)); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .credentials {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(218, 165, 32, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(218, 165, 32, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-box {
+            background: rgba(218, 165, 32, 0.05);
+            padding: 1.5rem;
+            border-left: 2px solid var(--primary);
+        }
+
+        .highlight-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 400px;
+            background: rgba(218, 165, 32, 0.1);
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 40%, rgba(218, 165, 32, 0.1) 50%, transparent 60%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .about-visual-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .about-visual-content i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-visual-content h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: var(--dark);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+            padding: 2.5rem 1.5rem;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .value-card:hover::before {
+            left: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(218, 165, 32, 0.2);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .value-desc {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Objective Section */
+        .objective-section {
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+            border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .objective-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(218, 165, 32, 0.05);
+            padding: 3rem;
+            border-left: 4px solid var(--primary);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 8rem;
+            color: rgba(218, 165, 32, 0.1);
+            font-family: Georgia, serif;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+            padding: 2.5rem;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(218, 165, 32, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .service-desc {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            background: var(--dark);
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .philosophy-intro {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .philosophy-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .philosophy-list li {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, rgba(218, 165, 32, 0.1) 0%, transparent 100%);
+            border-left: 3px solid var(--primary);
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .philosophy-list li i {
+            margin-right: 1rem;
+            color: var(--primary);
+        }
+
+        .philosophy-list li:hover {
+            background: rgba(218, 165, 32, 0.15);
+            transform: translateX(10px);
+        }
+
+        /* Management Section */
+        .management-section {
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .management-card {
+            background: rgba(10, 10, 10, 0.5);
+            padding: 2rem;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .management-card:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .management-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .management-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .management-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Organogram Section */
+        .organogram-section {
+            background: var(--dark);
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .org-chart {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+            padding: 3rem;
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .org-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .org-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .org-position {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 0.2rem;
+        }
+
+        .contact-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item p {
+            color: var(--text-light);
+        }
+
+        .contact-form {
+            background: rgba(10, 10, 10, 0.5);
+            padding: 2rem;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            color: var(--text);
+            font-family: inherit;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(218, 165, 32, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .footer-content {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 50%;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-text {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-top: 1px solid rgba(218, 165, 32, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-year {
+                font-size: 4rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .objective-box {
+                padding: 2rem;
+                font-size: 1.1rem;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <header id="header">
+        <div class="logo-container">
+            <div class="logo">MORGAN & IRENE CORP</div>
+            <div class="tagline">Become The Salt of The Earth</div>
+        </div>
+        
+        <nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <!--<a href="#philosophy">Philosophy</a>-->
+                <!--<a href="#management">Management</a>-->
+                <!--<a href="#leadership">Leadership</a>-->
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-year">2024</div>
+            <h1 class="hero-title">Building Excellence</h1>
+            <p class="hero-subtitle">Transforming Visions into Reality</p>
+            <div class="credentials">Construction | Civil Engineering | Maintenance</div>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#services" class="btn btn-secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-subtitle">Morgan & Irene Corp is a 100% Black-owned company registered in 2023 in South Africa (Company No: 2023/172382/07). We specialize in various construction and engineering services, priding ourselves on quality provision that reflects the character and reputation of our company.</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>With a commitment to excellence and a focus on delivering exceptional value, we approach every project with the same dedication and attention to detail that has become our trademark.</p>
+                
+                <div class="about-highlights">
+                    <div class="highlight-box">
+                        <div class="highlight-title">Our Vision</div>
+                        <p>To provide great business values and optimized solutions needed by our clients to finally improve our stakeholders' quality of life.</p>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-title">Our Mission</div>
+                        <p>To procure projects at competitive pricing, provide safe working conditions and deliver quality work within reasonable time frame.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="about-visual-content">
+                    <i class="fas fa-hard-hat"></i>
+                    <h3>Building The Future</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <h2 class="section-title">Our Values</h2>
+        <p class="section-subtitle">Our values determine how we treat our people, clients and partners. They define who we are and how we do our jobs, helping us work together in the most effective way.</p>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-bullseye"></i></div>
+                <h3 class="value-title">Commitment</h3>
+                <p class="value-desc">Dedicated to delivering on our promises with unwavering focus and determination.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-people-group"></i></div>
+                <h3 class="value-title">Team Work</h3>
+                <p class="value-desc">Collaborating effectively to achieve shared goals and exceptional results.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                <h3 class="value-title">Client Forever</h3>
+                <p class="value-desc">Building lasting relationships through exceptional service and reliability.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-award"></i></div>
+                <h3 class="value-title">Competence</h3>
+                <p class="value-desc">Applying expertise and skill to deliver quality in every project.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="value-title">Value Addition</h3>
+                <p class="value-desc">Going beyond expectations to deliver extra value in all we do.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="value-title">Integrity</h3>
+                <p class="value-desc">Operating with honesty, transparency, and ethical principles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="objective-section">
+        <h2 class="section-title">Our Objective</h2>
+        <div class="objective-box">
+            To provide our clients with an "I AM ASSURED" experience when we are chosen to execute their projects. Our emphasis on clear communication and follow-through procedures ensures that client's objectives are top priority in the planning and execution of all our processes.
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">We offer a comprehensive range of construction and engineering services tailored to meet our clients' unique needs and specifications.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-door-open"></i></div>
+                <h3 class="service-title">Doors</h3>
+                <p class="service-desc">Replacement and fitting of new doors to enhance security and usability.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-th-large"></i></div>
+                <h3 class="service-title">Tiling</h3>
+                <p class="service-desc">Floor and wall tiling in various areas, ensuring durability and a modern look.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-faucet"></i></div>
+                <h3 class="service-title">Sanitary Fittings</h3>
+                <p class="service-desc">Installation of new fixtures, including sinks, toilets, and other bathroom amenities.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
+                <h3 class="service-title">Painting</h3>
+                <p class="service-desc">Comprehensive interior and exterior painting services to refresh and protect buildings.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-toolbox"></i></div>
+                <h3 class="service-title">Plumbing & Drainage</h3>
+                <p class="service-desc">Upgrades and repairs to existing plumbing systems, ensuring efficient water management.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                <h3 class="service-title">Enviro-loo</h3>
+                <p class="service-desc">Construction of eco-friendly outdoor toilets to meet the needs of staff and visitors.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy-section" id="philosophy">
+        <h2 class="section-title">Project Management Philosophy</h2>
+        <div class="philosophy-content">
+            <p class="philosophy-intro">We take pride in delivery, ensuring only the most experienced and qualified people serve our clients.</p>
+            <ul class="philosophy-list">
+                <li><i class="fas fa-check-circle"></i> Create detailed schedule and resources plan to meet client's project objectives</li>
+                <li><i class="fas fa-check-circle"></i> Communicate clearly with all project stakeholders</li>
+                <li><i class="fas fa-check-circle"></i> Track project progress and fine tune deviations</li>
+                <li><i class="fas fa-check-circle"></i> Supervise closely on quality of work done</li>
+                <li><i class="fas fa-check-circle"></i> Complete and commission the project on time</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="management-section" id="management">
+        <h2 class="section-title">Management Duties</h2>
+        <div class="management-grid">
+            <div class="management-card">
+                <i class="fas fa-bullseye"></i>
+                <h3>Strategic Vision</h3>
+                <p>Determining the company's strategic objectives and policies</p>
+            </div>
+            <div class="management-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Progress Monitoring</h3>
+                <p>Monitoring progress towards achieving the objectives and policies</p>
+            </div>
+            <div class="management-card">
+                <i class="fas fa-users"></i>
+                <h3>Leadership</h3>
+                <p>Appointing senior management</p>
+            </div>
+            <div class="management-card">
+                <i class="fas fa-balance-scale"></i>
+                <h3>Accountability</h3>
+                <p>Accounting for the company's activities to relevant parties, eg shareholders</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="organogram-section" id="leadership">
+        <h2 class="section-title">Leadership</h2>
+        <div class="org-chart">
+            <div class="org-title">Managing Director</div>
+            <div class="org-name">Reotshepile Mogoelelwa</div>
+            <div class="org-position">Leading with Vision & Excellence</div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">Ready to start your project? Get in touch with us today to discuss how we can bring your vision to life.</p>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>South Africa</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Phone Number</h3>
+                        <p>+27 XX XXX XXXX</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email Address</h3>
+                        <p>info@morganirenecorp.co.za</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Working Hours</h3>
+                        <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">MORGAN & IRENE CORP ®</div>
+        <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-content">
+            <p>Become The Salt of The Earth</p>
+            <p style="margin-top: 1rem; opacity: 0.6;">© 2024 Morgan & Irene Corp. All rights reserved. | Company Registration: 2023/172382/07</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
